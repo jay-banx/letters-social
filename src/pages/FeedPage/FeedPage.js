@@ -1,25 +1,28 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
-import PropTypes from "prop-types"
+import { jsx } from "@emotion/core";
+import PropTypes from "prop-types";
+
+import { Welcome, PostContainer, AdList } from "../../components";
 
 const style = {
+  display: "grid",
+  gridGap: 10,
+  gridTemplateColumns: "[left] 20vw [center] 50vw [right] 20vw",
+  justifyContent: "center",
+};
 
-}
-
-const FeedPage = (props) => {
+const FeedPage = () => {
   return (
     <div css={style}>
-      FeedPage
+      <Welcome />
+      <PostContainer />
+      <AdList />
     </div>
   );
 };
 
-FeedPage.propTypes = {
+FeedPage.propTypes = {};
 
-};
-
-FeedPage.defaultProps = {
-  
-};
+FeedPage.defaultProps = {};
 
 export default FeedPage;

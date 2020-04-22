@@ -1,25 +1,25 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
-import PropTypes from "prop-types"
+import { jsx } from "@emotion/core";
+import PropTypes from "prop-types";
+
+import { Profile } from "../../components";
 
 const style = {
+  display: "grid",
+  gridTemplateColumns: "calc(90vw + 20px)",
+  justifyContent: "center",
+};
 
-}
-
-const ProfilePage = (props) => {
+const ProfilePage = () => {
   return (
     <div css={style}>
-      ProfilePage
+      <Profile />
     </div>
   );
 };
 
-ProfilePage.propTypes = {
+ProfilePage.propTypes = {};
 
-};
-
-ProfilePage.defaultProps = {
-  
-};
+ProfilePage.defaultProps = {};
 
 export default ProfilePage;
