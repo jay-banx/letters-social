@@ -6,20 +6,20 @@ const style = {
 
 }
 
-const App = (props) => {
+const LoginPage = (props) => {
   return (
     <div css={style}>
-      App
+      LoginPage
     </div>
   );
 };
 
-App.propTypes = {
+LoginPage.propTypes = {
 
 };
 
-App.defaultProps = {
+LoginPage.defaultProps = {
   
 };
 
-export default App;
+export default LoginPage;
