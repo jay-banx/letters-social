@@ -1,11 +1,14 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core"
 import PropTypes from "prop-types"
 
-import "./{{pascalCase name}}.css"
+const style = {
+
+}
 
 const {{pascalCase name}} = (props) => {
   return (
-    <div className="{{kebabCase name}}">
+    <div css={style}>
       {{pascalCase name}}
     </div>
   );

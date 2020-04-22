@@ -1,11 +1,14 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core"
 import PropTypes from "prop-types"
 
-import "./App.css"
+const style = {
+
+}
 
 const App = (props) => {
   return (
-    <div className="app">
+    <div css={style}>
       App
     </div>
   );
