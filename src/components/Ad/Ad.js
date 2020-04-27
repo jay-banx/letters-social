@@ -1,25 +1,17 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
-import PropTypes from "prop-types"
+import { jsx } from "@emotion/core";
+import PropTypes from "prop-types";
 
 const style = {
-
-}
+  backgroundColor: "white",
+};
 
 const Ad = (props) => {
-  return (
-    <div css={style}>
-      Ad
-    </div>
-  );
+  return <div css={style}>Ad</div>;
 };
 
-Ad.propTypes = {
+Ad.propTypes = {};
 
-};
-
-Ad.defaultProps = {
-  
-};
+Ad.defaultProps = {};
 
 export default Ad;

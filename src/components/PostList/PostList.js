@@ -1,25 +1,26 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
-import PropTypes from "prop-types"
+import { jsx } from "@emotion/core";
+import PropTypes from "prop-types";
+import { Post } from "../../components";
 
-const style = {
+const style = {};
 
-}
-
-const PostList = (props) => {
+const PostList = ({ posts }) => {
   return (
     <div css={style}>
-      PostList
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </div>
   );
 };
 
 PostList.propTypes = {
-
+  posts: PropTypes.arrayOf(PropTypes.object),
 };
 
 PostList.defaultProps = {
-  
+  posts: [],
 };
 
 export default PostList;

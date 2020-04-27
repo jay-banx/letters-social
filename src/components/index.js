@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import PostHeader from './PostHeader';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
 import AdList from './AdList';
@@ -14,6 +15,7 @@ import Welcome from './Welcome';
 
 export {
 /* PLOP_INJECT_EXPORT */
+	PostHeader,
 	Profile,
 	LoginForm,
 	AdList,
