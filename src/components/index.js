@@ -1,4 +1,7 @@
 /* PLOP_INJECT_IMPORT */
+import CommentList from './CommentList';
+import Comment from './Comment';
+import PostFooter from './PostFooter';
 import PostHeader from './PostHeader';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
@@ -15,6 +18,9 @@ import Welcome from './Welcome';
 
 export {
 /* PLOP_INJECT_EXPORT */
+	CommentList,
+	Comment,
+	PostFooter,
 	PostHeader,
 	Profile,
 	LoginForm,

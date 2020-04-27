@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 
-import { PostHeader } from "../../components";
+import { PostHeader, PostFooter } from "../../components";
 
 const style = {
   backgroundColor: "white",
@@ -17,10 +17,7 @@ const Post = ({ post }) => {
       <PostHeader username={username} date={date} />
       <div>{content}</div>
       <div>{location}</div>
-      <div>
-        <div>{likes} likes</div>
-        <div>{comments}</div>
-      </div>
+      <PostFooter likes={likes} comments={comments} />
     </div>
   );
 };
