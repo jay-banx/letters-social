@@ -10,10 +10,11 @@ const style = {
   },
 };
 
-const PostHeader = ({ username, date }) => {
+const PostHeader = ({ user, date }) => {
   return (
     <div css={style}>
-      <div>{username}</div>
+      <img src={user.image} alt="" />
+      <div>{user.username}</div>
       <div>{timeDuration(date)} ago</div>
     </div>
   );

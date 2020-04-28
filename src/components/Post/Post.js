@@ -10,11 +10,11 @@ const style = {
 };
 
 const Post = ({ post }) => {
-  const { username, date, content, location, likes, comments } = post;
+  const { user, date, content, location, likes, comments } = post;
 
   return (
     <div css={style}>
-      <PostHeader username={username} date={date} />
+      <PostHeader user={user} date={date} />
       <div>{content}</div>
       <div>{location}</div>
       <PostFooter likes={likes} comments={comments} />

@@ -1,50 +1,20 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { withLettersService } from "../../hocs";
 
 import { PostList, CreatePost } from "../../components";
 
 const style = {};
 
-const PostContainer = (props) => {
-  const initPosts = [
-    {
-      id: 0,
-      username: "Denis",
-      date: 1587990994977,
-      content: "hello",
-      location: null,
-      likes: 0,
-      comments: [
-        {
-          id: 0,
-          username: "Robert",
-          date: 1587990994977,
-          content: "uuuu",
-          likes: 0,
-        },
-        {
-          id: 1,
-          username: "Hugo",
-          date: 1587990994977,
-          content: "ffff",
-          likes: 0,
-        },
-      ],
-    },
-    {
-      id: 1,
-      username: "Anna",
-      date: 1587990094977,
-      content: "world",
-      location: null,
-      likes: 5,
-      comments: [],
-    },
-  ];
+const PostContainer = ({ getAllPosts }) => {
+  const [posts, setPosts] = useState([]);
 
-  const [posts, setPosts] = useState(initPosts);
+  useEffect(() => {
+    getAllPosts().then((res) => setPosts(res));
+  }, []);
 
   return (
     <div css={style}>
@@ -58,4 +28,8 @@ PostContainer.propTypes = {};
 
 PostContainer.defaultProps = {};
 
-export default PostContainer;
+const mapMethodsToProps = (lettersService) => ({
+  getAllPosts: lettersService.getAllPosts,
+});
+
+export default withLettersService(mapMethodsToProps)(PostContainer);
