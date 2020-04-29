@@ -1,20 +1,17 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { compose } from "../../utils";
 
-import { withLettersService } from "../../hocs";
+import { withLettersService, withData } from "../../hocs";
 
 import { PostList, CreatePost } from "../../components";
 
 const style = {};
 
-const PostContainer = ({ getAllPosts }) => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    getAllPosts().then((res) => setPosts(res));
-  }, []);
+const PostContainer = ({ data }) => {
+  const [posts, setPosts] = useState(data);
 
   return (
     <div css={style}>
@@ -29,7 +26,10 @@ PostContainer.propTypes = {};
 PostContainer.defaultProps = {};
 
 const mapMethodsToProps = (lettersService) => ({
-  getAllPosts: lettersService.getAllPosts,
+  getData: lettersService.getAllPosts,
 });
 
-export default withLettersService(mapMethodsToProps)(PostContainer);
+export default compose(
+  withLettersService(mapMethodsToProps),
+  withData
+)(PostContainer);

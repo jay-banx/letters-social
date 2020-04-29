@@ -15,7 +15,11 @@ const CreatePost = ({ onCreatePost }) => {
     event.preventDefault();
     onCreatePost({
       id: Date.now(),
-      username: "Lorry",
+      user: {
+        id: 0,
+        username: "Denis",
+        image: "https://picsum.photos/30",
+      },
       date: Date.now(),
       content: text,
       location: null,
