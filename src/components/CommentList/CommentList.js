@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 
 import { Comment } from "../../components";
 
-const style = {
-  width: "100%",
-};
+const style = {};
 
 const CommentList = ({ comments }) => {
   return (

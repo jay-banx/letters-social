@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-import { CommentList } from "../../components";
+import { CommentContainer } from "../../components";
 
 const style = {
   display: "flex",
@@ -22,7 +22,7 @@ const PostFooter = ({ likes, comments }) => {
       >
         {comments.length} comments
       </div>
-      {visibleComments ? <CommentList comments={comments} /> : null}
+      {visibleComments ? <CommentContainer data={comments} /> : null}
     </div>
   );
 };

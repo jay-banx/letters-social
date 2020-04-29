@@ -1,4 +1,6 @@
 /* PLOP_INJECT_IMPORT */
+import CommentContainer from './CommentContainer';
+import CreateComment from './CreateComment';
 import CommentList from './CommentList';
 import Comment from './Comment';
 import PostFooter from './PostFooter';
@@ -18,6 +20,8 @@ import Welcome from './Welcome';
 
 export {
 /* PLOP_INJECT_EXPORT */
+	CommentContainer,
+	CreateComment,
 	CommentList,
 	Comment,
 	PostFooter,
