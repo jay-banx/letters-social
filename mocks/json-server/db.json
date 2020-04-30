@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 40,
+      "id": 0,
       "firstName": "Aglae",
       "lastName": "McLaughlin",
       "age": 68,
@@ -10,7 +10,7 @@
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/krystalfister/128.jpg"
     },
     {
-      "id": 41,
+      "id": 1,
       "firstName": "Daniella",
       "lastName": "Abernathy",
       "age": 43,
@@ -19,7 +19,7 @@
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/baires/128.jpg"
     },
     {
-      "id": 42,
+      "id": 2,
       "firstName": "Thelma",
       "lastName": "Maggio",
       "age": 70,
@@ -30,22 +30,22 @@
   ],
   "posts": [
     {
-      "id": 43,
-      "userId": 44,
+      "id": 0,
+      "userId": 0,
       "date": "Fri Jul 26 2019 04:35:41 GMT+0300 (Moscow Standard Time)",
       "content": "Modi laborum et ut.",
       "location": null
     },
     {
-      "id": 45,
-      "userId": 46,
+      "id": 1,
+      "userId": 1,
       "date": "Wed Jul 17 2019 02:30:06 GMT+0300 (Moscow Standard Time)",
       "content": "Non voluptatem tempora iusto ipsa et.",
       "location": null
     },
     {
-      "id": 47,
-      "userId": 48,
+      "id": 2,
+      "userId": 2,
       "date": "Fri Jan 10 2020 18:53:18 GMT+0300 (Moscow Standard Time)",
       "content": "Laboriosam magni tempore nesciunt ut.",
       "location": null
@@ -53,30 +53,30 @@
   ],
   "comments": [
     {
-      "id": 49,
-      "userId": 50,
+      "id": 0,
+      "userId": 0,
       "date": "Tue Dec 17 2019 11:08:25 GMT+0300 (Moscow Standard Time)",
       "content": "Quo atque temporibus voluptas.",
-      "postId": 51
+      "postId": 0
     },
     {
-      "id": 52,
-      "userId": 53,
+      "id": 1,
+      "userId": 1,
       "date": "Mon Oct 28 2019 15:37:15 GMT+0300 (Moscow Standard Time)",
       "content": "Sed non eveniet architecto sunt.",
-      "postId": 54
+      "postId": 0
     },
     {
-      "id": 55,
-      "userId": 56,
+      "id": 2,
+      "userId": 1,
       "date": "Fri Apr 17 2020 06:11:58 GMT+0300 (Moscow Standard Time)",
       "content": "Eligendi ratione eaque voluptatem.",
-      "postId": 57
+      "postId": 1
     }
   ],
   "likes": [
-    { "id": 58, "userId": 59, "postId": 60 },
-    { "id": 61, "userId": 62, "postId": 63 },
-    { "id": 64, "userId": 65, "postId": 66 }
+    { "id": 0, "userId": 0, "postId": 0 },
+    { "id": 1, "userId": 1, "postId": 0 },
+    { "id": 2, "userId": 2, "postId": 0 }
   ]
 }
