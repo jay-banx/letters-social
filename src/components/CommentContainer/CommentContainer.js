@@ -2,7 +2,6 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { compose } from "../../utils";
 
 import { CommentList, CreateComment } from "../../components";
 
