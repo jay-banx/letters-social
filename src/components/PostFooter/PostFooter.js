@@ -10,19 +10,19 @@ const style = {
   flexWrap: "wrap",
 };
 
-const PostFooter = ({ likes, comments }) => {
+const PostFooter = ({ postId }) => {
   const [visibleComments, setVisibleComments] = useState(false);
 
   return (
     <div css={style}>
-      <div>{likes} likes</div>
+      <div>like</div>
       <div
         css={{ marginLeft: "auto" }}
         onClick={() => setVisibleComments(!visibleComments)}
       >
-        {comments.length} comments
+        comments
       </div>
-      {visibleComments ? <CommentContainer data={comments} /> : null}
+      {visibleComments ? <CommentContainer postId={postId} /> : null}
     </div>
   );
 };

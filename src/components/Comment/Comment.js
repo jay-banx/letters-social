@@ -4,18 +4,18 @@ import PropTypes from "prop-types";
 
 import { timeDuration } from "../../utils";
 
+import { UserInfo } from "../../components";
+
 const style = {};
 
 const Comment = ({ comment }) => {
-  const { user, date, content, likes } = comment;
+  const { userId, date, content } = comment;
 
   return (
     <div css={style}>
-      <img src={user.image} alt="" />
-      <div>{user.username}</div>
+      <UserInfo userId={userId} />
       <div>{timeDuration(date)} ago</div>
       <div>{content}</div>
-      <div>{likes} likes</div>
     </div>
   );
 };

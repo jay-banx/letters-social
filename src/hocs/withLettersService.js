@@ -6,7 +6,7 @@ const withLettersService = (mapMethodsToProps) => (Wrapped) => {
     return (
       <LettersServiceConsumer>
         {(lettersService) => {
-          const lettersProps = mapMethodsToProps(lettersService);
+          const lettersProps = mapMethodsToProps(lettersService, props);
           return <Wrapped {...props} {...lettersProps} />;
         }}
       </LettersServiceConsumer>
