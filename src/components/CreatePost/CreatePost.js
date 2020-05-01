@@ -14,17 +14,11 @@ const CreatePost = ({ onCreatePost }) => {
   const onPost = (event) => {
     event.preventDefault();
     onCreatePost({
-      id: Date.now(),
-      user: {
-        id: 0,
-        username: "Denis",
-        image: "https://picsum.photos/30",
-      },
-      date: Date.now(),
+      id: Date.now(), // Fix it
+      userId: 0, // Fix it
+      date: Date.now(), // Fix it
       content: text,
       location: null,
-      likes: 0,
-      comments: [],
     });
     setText("");
   };

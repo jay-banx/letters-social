@@ -14,15 +14,11 @@ const CreateComment = ({ onCreateComment }) => {
   const onComment = (event) => {
     event.preventDefault();
     onCreateComment({
-      id: Date.now(),
-      user: {
-        id: 0,
-        username: "Denis",
-        image: "https://picsum.photos/30",
-      },
-      date: Date.now(),
+      id: Date.now(), // Fix it
+      userId: 0, // Fix it
+      date: Date.now(), // Fix it
       content: text,
-      likes: 0,
+      postId: 0, // Fix it
     });
     setText("");
   };
