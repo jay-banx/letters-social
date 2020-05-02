@@ -12,11 +12,12 @@ const style = {
   width: "100%",
 };
 
-const CommentContainer = ({ data }) => {
+const CommentContainer = ({ data, postId }) => {
   const [comments, setComments] = useState(data);
   return (
     <div css={style}>
       <CreateComment
+        postId={postId}
         onCreateComment={(newComment) => setComments([newComment, ...comments])}
       />
       <CommentList comments={comments} />

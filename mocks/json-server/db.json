@@ -72,6 +72,13 @@
       "date": "Fri Apr 17 2020 06:11:58 GMT+0300 (Moscow Standard Time)",
       "content": "Eligendi ratione eaque voluptatem.",
       "postId": 1
+    },
+    {
+      "id": 1588411306319,
+      "userId": 0,
+      "date": 1588411306319,
+      "content": "test",
+      "postId": 1
     }
   ],
   "likes": [

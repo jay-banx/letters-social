@@ -10,7 +10,7 @@ const style = {
   marginBottom: 10,
 };
 
-const CreateComment = ({ onCreateComment, createComment }) => {
+const CreateComment = ({ onCreateComment, createComment, postId }) => {
   const [text, setText] = useState("");
 
   const onComment = (event) => {
@@ -20,7 +20,7 @@ const CreateComment = ({ onCreateComment, createComment }) => {
       userId: 0, // Fix it
       date: Date.now(), // Fix it
       content: text,
-      postId: 0, // Fix it
+      postId: postId,
     }).then(onCreateComment); // Add catch
     setText("");
   };
