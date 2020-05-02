@@ -16,9 +16,7 @@ const CreatePost = ({ onCreatePost, createPost }) => {
   const onPost = (event) => {
     event.preventDefault();
     createPost({
-      id: Date.now(), // Fix it
       userId: 0, // Fix it
-      date: new Date().toISOString(),
       content: text,
       location: null,
     }).then(onCreatePost); // Add catch

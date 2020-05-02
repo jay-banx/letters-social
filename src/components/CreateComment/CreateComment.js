@@ -16,11 +16,9 @@ const CreateComment = ({ onCreateComment, createComment, postId }) => {
   const onComment = (event) => {
     event.preventDefault();
     createComment({
-      id: Date.now(), // Fix it
       userId: 0, // Fix it
-      date: new Date().toISOString(),
       content: text,
-      postId: postId,
+      postId,
     }).then(onCreateComment); // Add catch
     setText("");
   };
