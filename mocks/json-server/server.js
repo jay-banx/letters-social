@@ -4,7 +4,7 @@ const server = jsonServer.create();
 const router = jsonServer.router("mocks/json-server/db.json");
 const middlewares = jsonServer.defaults();
 
-// Handling Post
+// Handling POST
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
   if (req.method === "POST") {

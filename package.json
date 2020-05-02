@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "generate": "plop",
     "mock:api": "node mocks/json-server/server.js",
-    "db:seed": "node mocks/json-schema-faker/seed.js"
+    "seed:db": "node mocks/json-server/seed.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,7 +41,6 @@
   },
   "devDependencies": {
     "faker": "^4.1.0",
-    "json-schema-faker": "^0.5.0-rcv.24",
     "json-server": "^0.16.1",
     "plop": "^2.6.0"
   }
