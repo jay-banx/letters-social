@@ -3,23 +3,25 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
+import { withLettersService } from "../../hocs";
+
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
 };
 
-const CreateComment = ({ onCreateComment }) => {
+const CreateComment = ({ onCreateComment, createComment }) => {
   const [text, setText] = useState("");
 
   const onComment = (event) => {
     event.preventDefault();
-    onCreateComment({
+    createComment({
       id: Date.now(), // Fix it
       userId: 0, // Fix it
       date: Date.now(), // Fix it
       content: text,
       postId: 0, // Fix it
-    });
+    }).then(onCreateComment); // Add catch
     setText("");
   };
 
@@ -42,4 +44,8 @@ CreateComment.propTypes = {};
 
 CreateComment.defaultProps = {};
 
-export default CreateComment;
+const mapMethodsToProps = (lettersService) => ({
+  createComment: lettersService.createComment,
+});
+
+export default withLettersService(mapMethodsToProps)(CreateComment);

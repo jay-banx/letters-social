@@ -3,23 +3,25 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
+import { withLettersService } from "../../hocs";
+
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
 };
 
-const CreatePost = ({ onCreatePost }) => {
+const CreatePost = ({ onCreatePost, createPost }) => {
   const [text, setText] = useState("");
 
   const onPost = (event) => {
     event.preventDefault();
-    onCreatePost({
+    createPost({
       id: Date.now(), // Fix it
       userId: 0, // Fix it
       date: Date.now(), // Fix it
       content: text,
       location: null,
-    });
+    }).then(onCreatePost); // Add catch
     setText("");
   };
 
@@ -43,4 +45,8 @@ CreatePost.propTypes = {};
 
 CreatePost.defaultProps = {};
 
-export default CreatePost;
+const mapMethodsToProps = (lettersService) => ({
+  createPost: lettersService.createPost,
+});
+
+export default withLettersService(mapMethodsToProps)(CreatePost);
