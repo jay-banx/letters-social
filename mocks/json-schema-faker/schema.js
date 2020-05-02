@@ -82,11 +82,11 @@ const schema = {
         },
         date: {
           type: "string",
-          faker: "date.past",
+          format: "recentDate",
         },
         content: {
           type: "string",
-          faker: "lorem.sentence",
+          faker: "random.words",
         },
         location: {
           type: "null",
@@ -105,11 +105,11 @@ const schema = {
         },
         date: {
           type: "string",
-          faker: "date.past",
+          format: "recentDate",
         },
         content: {
           type: "string",
-          faker: "lorem.sentence",
+          faker: "random.words",
         },
         postId: {
           $ref: "#/definitions/positiveInt",

@@ -2,52 +2,52 @@
   "users": [
     {
       "id": 0,
-      "firstName": "Aglae",
-      "lastName": "McLaughlin",
-      "age": 68,
-      "email": "Quincy74@gmail.com",
-      "username": "Jamaal_McLaughlin91",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/krystalfister/128.jpg"
+      "firstName": "Zoey",
+      "lastName": "Lowe",
+      "age": 25,
+      "email": "Sim31@hotmail.com",
+      "username": "Claudia_Rempel19",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/falling_soul/128.jpg"
     },
     {
       "id": 1,
-      "firstName": "Daniella",
-      "lastName": "Abernathy",
-      "age": 43,
-      "email": "Bartholome.Flatley88@gmail.com",
-      "username": "Kellie48",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/baires/128.jpg"
+      "firstName": "Estell",
+      "lastName": "Kuphal",
+      "age": 36,
+      "email": "Cassie_Mertz@hotmail.com",
+      "username": "Mose60",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mdsisto/128.jpg"
     },
     {
       "id": 2,
-      "firstName": "Thelma",
-      "lastName": "Maggio",
-      "age": 70,
-      "email": "Marty_Blick@hotmail.com",
-      "username": "Gardner95",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mattlat/128.jpg"
+      "firstName": "Emil",
+      "lastName": "Stehr",
+      "age": 23,
+      "email": "Tess.Cassin23@gmail.com",
+      "username": "Rahsaan.Watsica19",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/byrnecore/128.jpg"
     }
   ],
   "posts": [
     {
       "id": 0,
       "userId": 0,
-      "date": "Fri Jul 26 2019 04:35:41 GMT+0300 (Moscow Standard Time)",
-      "content": "Modi laborum et ut.",
+      "date": "2020-05-02T10:03:05.786Z",
+      "content": "SMS Soft South Carolina",
       "location": null
     },
     {
       "id": 1,
       "userId": 1,
-      "date": "Wed Jul 17 2019 02:30:06 GMT+0300 (Moscow Standard Time)",
-      "content": "Non voluptatem tempora iusto ipsa et.",
+      "date": "2020-05-01T16:24:00.970Z",
+      "content": "Direct Steel",
       "location": null
     },
     {
       "id": 2,
       "userId": 2,
-      "date": "Fri Jan 10 2020 18:53:18 GMT+0300 (Moscow Standard Time)",
-      "content": "Laboriosam magni tempore nesciunt ut.",
+      "date": "2020-05-01T18:29:37.902Z",
+      "content": "invoice",
       "location": null
     }
   ],
@@ -55,47 +55,28 @@
     {
       "id": 0,
       "userId": 0,
-      "date": "Tue Dec 17 2019 11:08:25 GMT+0300 (Moscow Standard Time)",
-      "content": "Quo atque temporibus voluptas.",
+      "date": "2020-05-01T15:22:26.710Z",
+      "content": "connecting",
       "postId": 0
     },
     {
       "id": 1,
       "userId": 1,
-      "date": "Mon Oct 28 2019 15:37:15 GMT+0300 (Moscow Standard Time)",
-      "content": "Sed non eveniet architecto sunt.",
-      "postId": 0
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "date": "Fri Apr 17 2020 06:11:58 GMT+0300 (Moscow Standard Time)",
-      "content": "Eligendi ratione eaque voluptatem.",
-      "postId": 1
-    },
-    {
-      "id": 1588411306319,
-      "userId": 0,
-      "date": 1588411306319,
-      "content": "test",
-      "postId": 1
-    }
-  ],
-  "likes": [
-    {
-      "id": 0,
-      "userId": 0,
-      "postId": 0
-    },
-    {
-      "id": 1,
-      "userId": 1,
+      "date": "2020-05-01T13:50:49.380Z",
+      "content": "Auto Loan Account",
       "postId": 0
     },
     {
       "id": 2,
       "userId": 2,
-      "postId": 0
+      "date": "2020-05-02T11:19:30.626Z",
+      "content": "Fantastic",
+      "postId": 2
     }
+  ],
+  "likes": [
+    { "id": 0, "userId": 0, "postId": 0 },
+    { "id": 1, "userId": 0, "postId": 1 },
+    { "id": 2, "userId": 1, "postId": 2 }
   ]
 }

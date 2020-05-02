@@ -18,7 +18,7 @@ const CreateComment = ({ onCreateComment, createComment, postId }) => {
     createComment({
       id: Date.now(), // Fix it
       userId: 0, // Fix it
-      date: Date.now(), // Fix it
+      date: new Date().toISOString(),
       content: text,
       postId: postId,
     }).then(onCreateComment); // Add catch

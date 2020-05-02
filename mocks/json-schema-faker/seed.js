@@ -1,13 +1,12 @@
-const { resolve, extend } = require("json-schema-faker");
+const jsf = require("json-schema-faker");
 const fs = require("fs");
-extend("faker", () => {
-  let faker = require("faker");
-  faker.locale = "en"; // or any other language
-  return faker;
-});
+const faker = require("faker/locale/en_US");
 const schema = require("./schema");
 
-resolve(schema).then((sample) => {
+jsf.extend("faker", () => faker);
+jsf.format("recentDate", () => faker.date.recent().toISOString());
+
+jsf.resolve(schema).then((sample) => {
   console.log("Writing to db.json");
   fs.writeFile(
     `${__dirname}/../json-server/db.json`,
