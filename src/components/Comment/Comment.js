@@ -2,9 +2,7 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 
-import { timeDuration } from "../../utils";
-
-import { UserInfo } from "../../components";
+import { CommentHeader } from "../../components";
 
 const style = {};
 
@@ -13,8 +11,7 @@ const Comment = ({ comment }) => {
 
   return (
     <div css={style}>
-      <UserInfo userId={userId} />
-      <div>{timeDuration(date)} ago</div>
+      <CommentHeader userId={userId} date={date} />
       <div>{content}</div>
     </div>
   );

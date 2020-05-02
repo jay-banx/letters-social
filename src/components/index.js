@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import CommentHeader from './CommentHeader';
 import UserInfo from './UserInfo';
 import CommentContainer from './CommentContainer';
 import CreateComment from './CreateComment';
@@ -21,6 +22,7 @@ import Welcome from './Welcome';
 
 export {
 /* PLOP_INJECT_EXPORT */
+	CommentHeader,
 	UserInfo,
 	CommentContainer,
 	CreateComment,
