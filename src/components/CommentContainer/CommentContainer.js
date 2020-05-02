@@ -3,7 +3,6 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { compose } from "../../utils";
-import orderBy from "lodash/orderBy";
 
 import { withLettersService, withData } from "../../hocs";
 
@@ -14,7 +13,7 @@ const style = {
 };
 
 const CommentContainer = ({ data, postId }) => {
-  const [comments, setComments] = useState(orderBy(data, "date", "desc"));
+  const [comments, setComments] = useState(data);
   return (
     <div css={style}>
       <CreateComment

@@ -1,5 +1,6 @@
 class LettersService {
   _apiBase = "http://localhost:3001";
+  _sortByDate = "_sort=date&_order=desc";
 
   getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
@@ -28,11 +29,11 @@ class LettersService {
   };
 
   getAllPosts = async () => {
-    return this.getResource("/posts");
+    return this.getResource(`/posts?${this._sortByDate}`);
   };
 
   getPostComments = async (postId) => {
-    return this.getResource(`/comments?postId=${postId}`);
+    return this.getResource(`/comments?postId=${postId}&${this._sortByDate}`);
   };
 
   getPostLikes = async (postId) => {

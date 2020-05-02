@@ -3,7 +3,6 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { compose } from "../../utils";
-import orderBy from "lodash/orderBy";
 
 import { withLettersService, withData } from "../../hocs";
 
@@ -12,7 +11,7 @@ import { PostList, CreatePost } from "../../components";
 const style = {};
 
 const PostContainer = ({ data }) => {
-  const [posts, setPosts] = useState(orderBy(data, "date", "desc"));
+  const [posts, setPosts] = useState(data);
 
   return (
     <div css={style}>
