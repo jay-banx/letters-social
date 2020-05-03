@@ -1,8 +1,10 @@
-const fs = require("fs");
 const faker = require("faker/locale/en_US");
 const random = require("lodash/random");
+const fs = require("fs");
+const path = require("path");
 
-const dbFile = `${__dirname}/db.json`;
+const dbFile = path.join(__dirname, "./db.json");
+const usersFile = path.join(__dirname, "./users.json");
 
 let db = {
   users: [],
@@ -11,8 +13,12 @@ let db = {
   likes: [],
 };
 
+let usersDB = {
+  users: [],
+};
+
 for (let i = 0; i < 3; i++) {
-  db.users.push({
+  let user = {
     id: i,
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
@@ -20,7 +26,14 @@ for (let i = 0; i < 3; i++) {
     email: faker.internet.email(),
     username: faker.internet.userName(),
     avatar: faker.internet.avatar(),
-  });
+  };
+  let userPassword = {
+    id: i,
+    email: user.email,
+    password: faker.internet.password(),
+  };
+  db.users.push(user);
+  usersDB.users.push(userPassword);
 }
 
 for (let i = 0; i < 3; i++) {
@@ -51,7 +64,12 @@ for (let i = 0; i < 3; i++) {
   });
 }
 
-console.log(`Writing to ${dbFile}`);
-fs.writeFile(`${dbFile}`, JSON.stringify(db), (err) => {
+const onErr = (err) => {
   err ? console.error(err) : console.log("done");
-});
+};
+
+console.log(`Writing to ${dbFile}`);
+fs.writeFile(`${dbFile}`, JSON.stringify(db), onErr);
+
+console.log(`Writing to ${usersFile}`);
+fs.writeFile(`${usersFile}`, JSON.stringify(usersDB), onErr);
