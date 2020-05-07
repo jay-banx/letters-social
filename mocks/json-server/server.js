@@ -80,9 +80,9 @@ server.post("/auth/register", (req, res) => {
   });
 
   // Create token for new user
-  const access_token = createToken({ email, password });
-  console.log("Access Token:" + access_token);
-  res.status(200).json({ access_token });
+  const accessToken = createToken({ email, password });
+  console.log("Access Token:" + accessToken);
+  res.status(200).json({ accessToken });
 });
 
 // Login to one of the users from ./users.json
@@ -96,9 +96,9 @@ server.post("/auth/login", (req, res) => {
     res.status(status).json({ status, message });
     return;
   }
-  const access_token = createToken({ email, password });
-  console.log("Access Token:" + access_token);
-  res.status(200).json({ access_token });
+  const accessToken = createToken({ email, password });
+  console.log("Access Token:" + accessToken);
+  res.status(200).json({ accessToken });
 });
 
 server.post(/^(?!\/auth).*$/, (req, res, next) => {
@@ -126,7 +126,7 @@ server.post(/^(?!\/auth).*$/, (req, res, next) => {
     next();
   } catch (err) {
     const status = 401;
-    const message = "Error access_token is revoked";
+    const message = "Error accessToken is revoked";
     res.status(status).json({ status, message });
   }
 });

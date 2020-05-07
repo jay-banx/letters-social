@@ -10,7 +10,7 @@ import { Header } from "../components";
 import {
   FeedPage,
   HomePage,
-  LoginPage,
+  AuthPage,
   ProfilePage,
   NotFoundPage,
 } from "../pages";
@@ -41,7 +41,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/feed/" exact component={FeedPage} />
-            <Route path="/login/" exact component={LoginPage} />
+            <Route path="/auth/" exact component={AuthPage} />
             <Route path="/profile/" exact component={ProfilePage} />
             <Route component={NotFoundPage} />
           </Switch>

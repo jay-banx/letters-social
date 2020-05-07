@@ -1,1 +1,112 @@
-{"users":[{"id":0,"firstName":"Maud","lastName":"Witting","age":20,"email":"Royce.Bruen32@gmail.com","username":"Edward_Cormier20","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/oskarlevinson/128.jpg"},{"id":1,"firstName":"Allen","lastName":"Mayer","age":39,"email":"Travon_Berge@gmail.com","username":"Kirstin87","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg"},{"id":2,"firstName":"Rusty","lastName":"Stracke","age":55,"email":"Katharina7@hotmail.com","username":"Claudie57","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/ffbel/128.jpg"}],"posts":[{"id":0,"userId":0,"date":"2020-05-02T21:06:26.004Z","content":"Berkshire networks Meadow contextually-based Utah Fantastic Concrete Cheese Keyboard SSL Rubber zero tolerance Tasty Square azure superstructure Gorgeous indexing back-end revolutionize Cambridgeshire Unbranded Metal Sausages","location":null},{"id":1,"userId":1,"date":"2020-05-02T22:31:03.815Z","content":"functionalities Oval Assimilated Ergonomic paradigms Denmark Switchable Ergonomic Steel Tuna deposit yellow 1080p Horizontal viral cross-platform Investment Account multi-state silver wireless Michigan e-enable","location":null},{"id":2,"userId":2,"date":"2020-05-03T08:15:42.751Z","content":"Congolese Franc driver Light Buckinghamshire Auto Loan Account Estonia paradigms Incredible quantifying Marketing Clothing Fish Direct fuchsia Enhanced optical Investment Account card innovative Frozen","location":null}],"comments":[{"id":0,"userId":0,"date":"2020-05-03T12:31:38.632Z","content":"parallelism Handcrafted web-readiness Chips engage Ergonomic Frozen Chips Research Music back up Poland Highway mint green withdrawal New York synthesize back up Pizza applications Car Books","postId":0},{"id":1,"userId":1,"date":"2020-05-03T13:40:14.279Z","content":"alarm Mississippi Checking Account Jewelery parse Granite discrete Kentucky bandwidth Sharable Arkansas Industrial client-server Frozen Plastic Designer global generating envisioneer deposit","postId":0},{"id":2,"userId":2,"date":"2020-05-02T15:35:53.004Z","content":"Tasty Steel Chair Chair focus group European Unit of Account 9(E.U.A.-9) iterate Handcrafted Buckinghamshire Qatar Customizable strategize bluetooth hacking Movies South Carolina challenge Alaska Orchard project Dynamic Thailand","postId":0}],"likes":[{"id":0,"userId":0,"postId":0},{"id":1,"userId":1,"postId":0},{"id":2,"userId":2,"postId":0}]}
+{
+  "users": [
+    {
+      "id": 0,
+      "firstName": "Maud",
+      "lastName": "Witting",
+      "age": 20,
+      "email": "Royce.Bruen32@gmail.com",
+      "username": "Edward_Cormier20",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/oskarlevinson/128.jpg"
+    },
+    {
+      "id": 1,
+      "firstName": "Allen",
+      "lastName": "Mayer",
+      "age": 39,
+      "email": "Travon_Berge@gmail.com",
+      "username": "Kirstin87",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg"
+    },
+    {
+      "id": 2,
+      "firstName": "Rusty",
+      "lastName": "Stracke",
+      "age": 55,
+      "email": "Katharina7@hotmail.com",
+      "username": "Claudie57",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/ffbel/128.jpg"
+    }
+  ],
+  "posts": [
+    {
+      "id": 0,
+      "userId": 0,
+      "date": "2020-05-02T21:06:26.004Z",
+      "content": "Berkshire networks Meadow contextually-based Utah Fantastic Concrete Cheese Keyboard SSL Rubber zero tolerance Tasty Square azure superstructure Gorgeous indexing back-end revolutionize Cambridgeshire Unbranded Metal Sausages",
+      "location": null
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2020-05-02T22:31:03.815Z",
+      "content": "functionalities Oval Assimilated Ergonomic paradigms Denmark Switchable Ergonomic Steel Tuna deposit yellow 1080p Horizontal viral cross-platform Investment Account multi-state silver wireless Michigan e-enable",
+      "location": null
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "date": "2020-05-03T08:15:42.751Z",
+      "content": "Congolese Franc driver Light Buckinghamshire Auto Loan Account Estonia paradigms Incredible quantifying Marketing Clothing Fish Direct fuchsia Enhanced optical Investment Account card innovative Frozen",
+      "location": null
+    },
+    {
+      "userId": 0,
+      "content": "persik",
+      "location": null,
+      "id": 3
+    },
+    {
+      "userId": 0,
+      "content": "persik",
+      "location": null,
+      "id": 4
+    },
+    {
+      "userId": 0,
+      "content": "persik",
+      "location": null,
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "userId": 0,
+      "date": "2020-05-03T12:31:38.632Z",
+      "content": "parallelism Handcrafted web-readiness Chips engage Ergonomic Frozen Chips Research Music back up Poland Highway mint green withdrawal New York synthesize back up Pizza applications Car Books",
+      "postId": 0
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2020-05-03T13:40:14.279Z",
+      "content": "alarm Mississippi Checking Account Jewelery parse Granite discrete Kentucky bandwidth Sharable Arkansas Industrial client-server Frozen Plastic Designer global generating envisioneer deposit",
+      "postId": 0
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "date": "2020-05-02T15:35:53.004Z",
+      "content": "Tasty Steel Chair Chair focus group European Unit of Account 9(E.U.A.-9) iterate Handcrafted Buckinghamshire Qatar Customizable strategize bluetooth hacking Movies South Carolina challenge Alaska Orchard project Dynamic Thailand",
+      "postId": 0
+    }
+  ],
+  "likes": [
+    {
+      "id": 0,
+      "userId": 0,
+      "postId": 0
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "postId": 0
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "postId": 0
+    }
+  ]
+}

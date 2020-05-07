@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginPage from './LoginPage';
+import AuthPage from './AuthPage';
 
-describe('LoginPage', () => {
+describe('AuthPage', () => {
    it('renders without error', () => {
 
    });
