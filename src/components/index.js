@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import AuthForm from './AuthForm';
 import RegisterForm from './RegisterForm';
 import CommentHeader from "./CommentHeader";
 import UserInfo from "./UserInfo";
@@ -23,6 +24,7 @@ import Welcome from "./Welcome";
 
 export {
   /* PLOP_INJECT_EXPORT */
+	AuthForm,
 	RegisterForm,
   CommentHeader,
   UserInfo,

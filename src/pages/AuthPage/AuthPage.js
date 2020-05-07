@@ -1,20 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { useState } from "react";
 
-import { LoginForm, RegisterForm } from "../../components";
+import { AuthForm } from "../../components";
 
-const style = {};
+const style = {
+  display: "grid",
+  gridTemplateColumns: "calc(50vw)",
+  justifyContent: "center",
+};
 
 const AuthPage = () => {
-  const [visible, setVisible] = useState(true);
   return (
     <div css={style}>
-      <div>
-        <span onClick={() => setVisible(true)}>Login</span>
-        <span onClick={() => setVisible(false)}>Register</span>
-      </div>
-      {visible ? <LoginForm /> : <RegisterForm />}
+      <AuthForm />
     </div>
   );
 };

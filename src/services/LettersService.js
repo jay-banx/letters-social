@@ -12,6 +12,10 @@ class LettersService {
 
   login = async (email, password) => {
     const res = await fetch(`${this._apiBase}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
       body: JSON.stringify({ email, password }),
     });
 
@@ -21,11 +25,15 @@ class LettersService {
       );
     }
 
-    this.setToken(res.json().accessToken);
+    res.json().then((result) => this.setToken(result.accessToken));
   };
 
   register = async (email, password) => {
     const res = await fetch(`${this._apiBase}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
       body: JSON.stringify({ email, password }),
     });
 
@@ -35,7 +43,7 @@ class LettersService {
       );
     }
 
-    this.setToken(res.json().accessToken);
+    res.json().then((result) => this.setToken(result.accessToken));
   };
 
   getResource = async (url) => {
@@ -43,6 +51,7 @@ class LettersService {
       method: "GET",
       headers: {
         Authorization: "Bearer " + this.getToken(),
+        "Content-Type": "application/json; charset=utf-8",
       },
     });
 
@@ -53,10 +62,11 @@ class LettersService {
     return await res.json();
   };
 
-  createResource = async (url, resource) => {
+  postResource = async (url, resource) => {
     const res = await fetch(`${this._apiBase}${url}`, {
       method: "POST",
       headers: {
+        Authorization: "Bearer " + this.getToken(),
         "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(resource),
@@ -86,19 +96,19 @@ class LettersService {
   };
 
   createPost = async (post) => {
-    return this.createResource("/posts", post);
+    return this.postResource("/posts", post);
   };
 
   createComment = async (comment) => {
-    return this.createResource("/comments", comment);
+    return this.postResource("/comments", comment);
   };
 
   createLike = async (like) => {
-    return this.createResource("/likes", like);
+    return this.postResource("/likes", like);
   };
 
   createUser = async (user) => {
-    return this.createResource("/users", user);
+    return this.postResource("/users", user);
   };
 }
 

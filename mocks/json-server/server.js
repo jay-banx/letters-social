@@ -39,6 +39,12 @@ function isAuthenticated({ email, password }) {
 
 server.use(jsonServer.bodyParser);
 
+// CORS
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // Register New User
 server.post("/auth/register", (req, res) => {
   console.log("register endpoint called; request body:");
