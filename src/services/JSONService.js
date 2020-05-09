@@ -1,4 +1,4 @@
-class LettersService {
+class JSONService {
   _apiBase = "http://localhost:3001";
   _sortByDate = "_sort=date&_order=desc";
 
@@ -112,4 +112,4 @@ class LettersService {
   };
 }
 
-export default LettersService;
+export default JSONService;

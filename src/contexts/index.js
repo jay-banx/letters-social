@@ -1,6 +1,3 @@
-import {
-  LettersServiceProvider,
-  LettersServiceConsumer,
-} from "./LettersServiceContext";
+import { ServiceProvider, ServiceConsumer } from "./ServiceContext";
 
-export { LettersServiceProvider, LettersServiceConsumer };
+export { ServiceProvider, ServiceConsumer };

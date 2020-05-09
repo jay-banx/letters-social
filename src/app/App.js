@@ -3,8 +3,8 @@ import { jsx, Global } from "@emotion/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useState } from "react";
 
-import { LettersService } from "../services";
-import { LettersServiceProvider } from "../contexts";
+import { JSONService, FirebaseService } from "../services";
+import { ServiceProvider } from "../contexts";
 
 import { Header } from "../components";
 import {
@@ -30,10 +30,10 @@ const style = {
 };
 
 const App = () => {
-  const [lettersService, setLettersService] = useState(new LettersService());
+  const [service] = useState(new JSONService());
 
   return (
-    <LettersServiceProvider value={lettersService}>
+    <ServiceProvider value={service}>
       <Router>
         <Global styles={globalStyles} />
         <div css={style}>
@@ -47,7 +47,7 @@ const App = () => {
           </Switch>
         </div>
       </Router>
-    </LettersServiceProvider>
+    </ServiceProvider>
   );
 };
 

@@ -1,4 +1,4 @@
-import withLettersService from "./withLettersService";
+import withService from "./withService";
 import withData from "./withData";
 
-export { withLettersService, withData };
+export { withService, withData };
