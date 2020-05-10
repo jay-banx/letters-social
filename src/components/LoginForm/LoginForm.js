@@ -1,52 +1,86 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
+import { Component } from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+
 import { withService } from "../../hocs";
+import { withRouter } from "react-router-dom";
+import { compose } from "../../utils";
 
-const style = {};
+import { HOME } from "../../constants/routes";
 
-const LoginForm = ({ login }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const style = {
+  "& > form > label": {
+    display: "flex",
+  },
+};
 
-  const onLogin = (event) => {
-    event.preventDefault();
-    login(email, password);
-    setEmail("");
-    setPassword("");
+class LoginForm extends Component {
+  initialState = {
+    email: "",
+    password: "",
+    error: null,
   };
 
-  return (
-    <div css={style}>
-      <form action="" onSubmit={onLogin}>
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-        <br />
-        <input type="submit" value="Sing in" />
-      </form>
-    </div>
-  );
-};
+  state = { ...this.initialState };
+
+  onChange = (event) =>
+    this.setState({ [event.target.name]: event.target.value });
+
+  onLogin = (event) => {
+    const { email, password } = this.state;
+    const { login, history } = this.props;
+
+    login(email, password)
+      .then(() => {
+        this.setState({ ...this.initialState });
+        history.push(HOME);
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
+
+    event.preventDefault();
+  };
+
+  render() {
+    const { email, password } = this.state;
+
+    const isInvalid = email === "" || password === "";
+
+    return (
+      <div css={style}>
+        <form action="" onSubmit={this.onLogin}>
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={this.onChange}
+              placeholder="Type e-mail address..."
+            />
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={password}
+              onChange={this.onChange}
+              placeholder="Type password..."
+            />
+          </label>
+          <button disabled={isInvalid} type="submit">
+            Login
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
 
 LoginForm.propTypes = {};
 
@@ -56,4 +90,4 @@ const mapMethodsToProps = (service) => ({
   login: service.login,
 });
 
-export default withService(mapMethodsToProps)(LoginForm);
+export default compose(withRouter, withService(mapMethodsToProps))(LoginForm);
