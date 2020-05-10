@@ -28,6 +28,8 @@ class LoginForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
 
   onLogin = (event) => {
+    event.preventDefault();
+
     const { email, password } = this.state;
     const { login, history } = this.props;
 
@@ -39,8 +41,6 @@ class LoginForm extends Component {
       .catch((error) => {
         this.setState({ error });
       });
-
-    event.preventDefault();
   };
 
   render() {

@@ -33,10 +33,12 @@ class RegisterForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
 
   onRegister = (event) => {
-    const { email, password } = this.state;
+    event.preventDefault();
+
+    const { email, passwordOne } = this.state;
     const { register, history } = this.props;
 
-    register(email, password)
+    register(email, passwordOne)
       .then(() => {
         this.setState({ ...this.initialState });
         history.push(HOME);
@@ -44,8 +46,6 @@ class RegisterForm extends Component {
       .catch((error) => {
         this.setState({ error });
       });
-
-    event.preventDefault();
   };
 
   render() {
@@ -59,15 +59,18 @@ class RegisterForm extends Component {
       passwordTwo,
     } = this.state;
 
+    // const isInvalid =
+    //   passwordOne !== passwordTwo ||
+    //   passwordOne === "" ||
+    //   email === "" ||
+    //   username === "" ||
+    //   firstName === "" ||
+    //   lastName === "" ||
+    //   age === "" ||
+    //   username === "";
+
     const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === "" ||
-      email === "" ||
-      username === "" ||
-      firstName === "" ||
-      lastName === "" ||
-      age === "" ||
-      username === "";
+      passwordOne !== passwordTwo || passwordOne === "" || email === "";
 
     return (
       <div css={style}>
