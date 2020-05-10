@@ -1,34 +1,60 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 
+import { LogoutButton } from "../../components";
+
+import { HOME, FEED, AUTH, PROFILE } from "../../constants/routes";
+import { AuthUserConsumer } from "../../contexts";
+
 const style = {
-  display: "flex",
-  alignItems: "center",
   backgroundColor: "blue",
-  "& > div:last-child": {
+  "& > ul": {
     display: "flex",
+    alignItems: "center",
+  },
+  "& > ul > li:last-child": {
     marginLeft: "auto",
   },
 };
 
-const Header = (props) => {
-  return (
-    <div css={style}>
-      <Link to="/">Logo</Link>
-      <div>
-        <div>Username</div>
-        <img src="" alt="" />
-        <i className="fa"></i>
-      </div>
-    </div>
-  );
-};
+const Header = () => (
+  <AuthUserConsumer>
+    {(authUser) => (authUser ? <HeaderAuth /> : <HeaderNonAuth />)}
+  </AuthUserConsumer>
+);
 
-Header.propTypes = {};
+const HeaderAuth = () => (
+  <div css={style}>
+    <ul>
+      <li>
+        <Link to={HOME}>Home</Link>
+      </li>
+      <li>
+        <Link to={FEED}>Feed</Link>
+      </li>
+      <li>
+        <Link to={PROFILE}>Profile</Link>
+      </li>
+      <li>
+        <LogoutButton />
+      </li>
+    </ul>
+  </div>
+);
 
-Header.defaultProps = {};
+const HeaderNonAuth = () => (
+  <div css={style}>
+    <ul>
+      <li>
+        <Link to={HOME}>Home</Link>
+      </li>
+      <li>
+        <Link to={AUTH}>Auth</Link>
+      </li>
+    </ul>
+  </div>
+);
 
 export default Header;

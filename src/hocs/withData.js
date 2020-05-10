@@ -1,42 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 
 import { LoadingIndicator, ErrorIndicator } from "../components";
 
-const withData = (Wrapped) => (props) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const withData = (Wrapped) =>
+  class extends Component {
+    state = {
+      data: null,
+      loading: true,
+      error: null,
+    };
 
-  const onGetData = (data) => {
-    setData(data);
-    setLoading(false);
-    setError(null);
+    onGetData = (data) => {
+      this.setState({
+        data,
+        loading: false,
+        error: null,
+      });
+    };
+
+    onError = (error) => {
+      this.setState({
+        data: null,
+        loading: false,
+        error,
+      });
+    };
+
+    updateData = () => {
+      this.setState({
+        data: null,
+        loading: true,
+        error: null,
+      });
+      this.props.getData().then(this.onGetData).catch(this.onError);
+    };
+
+    componentDidMount() {
+      this.updateData();
+    }
+
+    render() {
+      const { data, loading, error } = this.state;
+      return loading ? (
+        <LoadingIndicator />
+      ) : error ? (
+        <ErrorIndicator />
+      ) : (
+        <Wrapped {...this.props} data={data} />
+      );
+    }
   };
-
-  const onError = (error) => {
-    setData(null);
-    setLoading(false);
-    setError(error);
-  };
-
-  const updateData = () => {
-    setData(null);
-    setLoading(true);
-    setError(null);
-    props.getData().then(onGetData).catch(onError);
-  };
-
-  useEffect(() => {
-    updateData();
-  }, []);
-
-  return loading ? (
-    <LoadingIndicator />
-  ) : error ? (
-    <ErrorIndicator />
-  ) : (
-    <Wrapped {...props} data={data} />
-  );
-};
 
 export default withData;

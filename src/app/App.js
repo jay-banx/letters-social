@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx, Global } from "@emotion/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { Component } from "react";
 
 import { JSONService, FirebaseService } from "../services";
-import { ServiceProvider } from "../contexts";
+import { ServiceProvider, AuthUserProvider } from "../contexts";
 
-import * as ROUTES from "../constants/routes";
+import { HOME, FEED, AUTH, PROFILE } from "../constants/routes";
 
 import { Header } from "../components";
 import {
@@ -31,26 +31,46 @@ const style = {
   gridAutoRows: "minmax(30px, auto)",
 };
 
-const App = () => {
-  const [service] = useState(new JSONService());
+const service = new FirebaseService();
 
-  return (
-    <ServiceProvider value={service}>
-      <Router>
-        <Global styles={globalStyles} />
-        <div css={style}>
-          <Header />
-          <Switch>
-            <Route path={ROUTES.HOME} exact component={HomePage} />
-            <Route path={ROUTES.FEED} exact component={FeedPage} />
-            <Route path={ROUTES.AUTH} exact component={AuthPage} />
-            <Route path={ROUTES.PROFILE} exact component={ProfilePage} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </div>
-      </Router>
-    </ServiceProvider>
-  );
-};
+class App extends Component {
+  state = {
+    authUser: null,
+  };
+
+  componentDidMount() {
+    this.listener = service.auth.onAuthStateChanged((authUser) => {
+      authUser
+        ? this.setState({ authUser })
+        : this.setState({ authUser: null });
+    });
+  }
+
+  componentWillUnmount() {
+    this.listener();
+  }
+
+  render() {
+    return (
+      <ServiceProvider value={service}>
+        <AuthUserProvider value={this.state.authUser}>
+          <Router>
+            <Global styles={globalStyles} />
+            <div css={style}>
+              <Header />
+              <Switch>
+                <Route path={HOME} exact component={HomePage} />
+                <Route path={FEED} exact component={FeedPage} />
+                <Route path={AUTH} exact component={AuthPage} />
+                <Route path={PROFILE} exact component={ProfilePage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </div>
+          </Router>
+        </AuthUserProvider>
+      </ServiceProvider>
+    );
+  }
+}
 
 export default App;
