@@ -19,18 +19,13 @@ class FirebaseService {
 
   // *** Auth API ***
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
+  register = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  doSignInWithEmailAndPassword = (email, password) =>
+  login = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-  doSignOut = () => this.auth.signOut();
-
-  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
-
-  doPasswordUpdate = (password) =>
-    this.auth.currentUser.updatePassword(password);
+  logout = () => this.auth.signOut();
 }
 
 export default FirebaseService;
