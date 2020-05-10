@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { compose } from "../../utils";
 
-import { withLettersService, withData } from "../../hocs";
+import { withService, withData } from "../../hocs";
 
 import { PostList, CreatePost } from "../../components";
 
@@ -25,11 +25,8 @@ PostContainer.propTypes = {};
 
 PostContainer.defaultProps = {};
 
-const mapMethodsToProps = (lettersService) => ({
-  getData: lettersService.getAllPosts,
+const mapMethodsToProps = (service) => ({
+  getData: service.getAllPosts,
 });
 
-export default compose(
-  withLettersService(mapMethodsToProps),
-  withData
-)(PostContainer);
+export default compose(withService(mapMethodsToProps), withData)(PostContainer);

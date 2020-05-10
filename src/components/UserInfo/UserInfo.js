@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { compose } from "../../utils";
-import { withData, withLettersService } from "../../hocs";
+import { withData, withService } from "../../hocs";
 
 const style = {
   display: "flex",
@@ -22,11 +22,8 @@ UserInfo.propTypes = {};
 
 UserInfo.defaultProps = {};
 
-const mapMethodsToProps = (lettersService, props) => ({
-  getData: () => lettersService.getUser(props.userId),
+const mapMethodsToProps = (service, props) => ({
+  getData: () => service.getUser(props.userId),
 });
 
-export default compose(
-  withLettersService(mapMethodsToProps),
-  withData
-)(UserInfo);
+export default compose(withService(mapMethodsToProps), withData)(UserInfo);

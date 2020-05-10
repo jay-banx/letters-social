@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { withLettersService } from "../../hocs";
+import { withService } from "../../hocs";
 
 const style = {};
 
@@ -104,8 +104,8 @@ RegisterForm.propTypes = {};
 
 RegisterForm.defaultProps = {};
 
-const mapMethodsToProps = (lettersService) => ({
-  register: lettersService.register,
+const mapMethodsToProps = (service) => ({
+  register: service.register,
 });
 
-export default withLettersService(mapMethodsToProps)(RegisterForm);
+export default withService(mapMethodsToProps)(RegisterForm);

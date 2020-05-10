@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { withLettersService } from "../../hocs";
+import { withService } from "../../hocs";
 
 const style = {};
 
@@ -52,8 +52,8 @@ LoginForm.propTypes = {};
 
 LoginForm.defaultProps = {};
 
-const mapMethodsToProps = (lettersService) => ({
-  login: lettersService.login,
+const mapMethodsToProps = (service) => ({
+  login: service.login,
 });
 
-export default withLettersService(mapMethodsToProps)(LoginForm);
+export default withService(mapMethodsToProps)(LoginForm);

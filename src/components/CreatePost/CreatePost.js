@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-import { withLettersService } from "../../hocs";
+import { withService } from "../../hocs";
 
 const style = {
   backgroundColor: "white",
@@ -43,8 +43,8 @@ CreatePost.propTypes = {};
 
 CreatePost.defaultProps = {};
 
-const mapMethodsToProps = (lettersService) => ({
-  createPost: lettersService.createPost,
+const mapMethodsToProps = (service) => ({
+  createPost: service.createPost,
 });
 
-export default withLettersService(mapMethodsToProps)(CreatePost);
+export default withService(mapMethodsToProps)(CreatePost);
