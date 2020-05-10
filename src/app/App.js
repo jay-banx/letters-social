@@ -6,6 +6,8 @@ import { useState } from "react";
 import { JSONService, FirebaseService } from "../services";
 import { ServiceProvider } from "../contexts";
 
+import * as ROUTES from "../constants/routes";
+
 import { Header } from "../components";
 import {
   FeedPage,
@@ -39,10 +41,10 @@ const App = () => {
         <div css={style}>
           <Header />
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/feed/" exact component={FeedPage} />
-            <Route path="/auth/" exact component={AuthPage} />
-            <Route path="/profile/" exact component={ProfilePage} />
+            <Route path={ROUTES.HOME} exact component={HomePage} />
+            <Route path={ROUTES.FEED} exact component={FeedPage} />
+            <Route path={ROUTES.AUTH} exact component={AuthPage} />
+            <Route path={ROUTES.PROFILE} exact component={ProfilePage} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
