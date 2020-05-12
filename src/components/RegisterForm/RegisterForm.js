@@ -21,6 +21,7 @@ class RegisterForm extends Component {
     lastName: "",
     age: "",
     username: "",
+    avatar: "",
     email: "",
     passwordOne: "",
     passwordTwo: "",
@@ -35,10 +36,29 @@ class RegisterForm extends Component {
   onRegister = (event) => {
     event.preventDefault();
 
-    const { email, passwordOne } = this.state;
-    const { register, history } = this.props;
+    const { register, getUser, history } = this.props;
+    const {
+      firstName,
+      lastName,
+      age,
+      username,
+      avatar,
+      email,
+      passwordOne,
+    } = this.state;
 
     register(email, passwordOne)
+      .then((authUser) => {
+        // Create a user in your Firebase realtime database
+        return getUser(authUser.user.uid).set({
+          firstName,
+          lastName,
+          age,
+          username,
+          avatar,
+          email,
+        });
+      })
       .then(() => {
         this.setState({ ...this.initialState });
         history.push(HOME);
@@ -54,23 +74,22 @@ class RegisterForm extends Component {
       lastName,
       age,
       username,
+      avatar,
       email,
       passwordOne,
       passwordTwo,
     } = this.state;
 
-    // const isInvalid =
-    //   passwordOne !== passwordTwo ||
-    //   passwordOne === "" ||
-    //   email === "" ||
-    //   username === "" ||
-    //   firstName === "" ||
-    //   lastName === "" ||
-    //   age === "" ||
-    //   username === "";
-
     const isInvalid =
-      passwordOne !== passwordTwo || passwordOne === "" || email === "";
+      passwordOne !== passwordTwo ||
+      passwordOne === "" ||
+      email === "" ||
+      username === "" ||
+      avatar === "" ||
+      firstName === "" ||
+      lastName === "" ||
+      age === "" ||
+      username === "";
 
     return (
       <div css={style}>
@@ -117,6 +136,17 @@ class RegisterForm extends Component {
               value={username}
               onChange={this.onChange}
               placeholder="Type your username..."
+            />
+          </label>
+          <label>
+            Avatar
+            <input
+              type="text"
+              name="avatar"
+              id="avatar"
+              value={avatar}
+              onChange={this.onChange}
+              placeholder="Type your first name..."
             />
           </label>
           <label>
@@ -167,6 +197,7 @@ RegisterForm.defaultProps = {};
 
 const mapMethodsToProps = (service) => ({
   register: service.register,
+  getUser: service.getUser,
 });
 
 export default compose(

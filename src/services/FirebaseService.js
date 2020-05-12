@@ -1,5 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,7 +15,9 @@ const config = {
 class FirebaseService {
   constructor() {
     app.initializeApp(config);
+
     this.auth = app.auth();
+    this.db = app.database();
   }
 
   // *** Auth API ***
@@ -26,6 +29,20 @@ class FirebaseService {
     this.auth.signInWithEmailAndPassword(email, password);
 
   logout = () => this.auth.signOut();
+
+  getUser = (userId) => this.db.ref(`users/${userId}`);
+
+  getAllPosts = () => this.db.ref(`posts`);
+
+  getPostComments = (postId) => this.db.ref(`comments/${postId}`);
+
+  getPostLikes = (postId) => this.db.ref(`likes/${postId}`);
+
+  createPost = (post) => this.db.ref(`posts`).set(post);
+
+  createComment = (comment) => this.db.ref(`comments`).set(comment);
+
+  createLike = (like) => this.db.ref(`likes`).set(like);
 }
 
 export default FirebaseService;
