@@ -38,11 +38,11 @@ class FirebaseService {
 
   getPostLikes = (postId) => this.db.ref(`likes/${postId}`);
 
-  createPost = (post) => this.db.ref(`posts`).set(post);
+  createPost = (post) => this.db.ref(`posts`).push(post);
 
-  createComment = (comment) => this.db.ref(`comments`).set(comment);
+  createComment = (comment) => this.db.ref(`comments`).push(comment);
 
-  createLike = (like) => this.db.ref(`likes`).set(like);
+  createLike = (like) => this.db.ref(`likes`).push(like);
 }
 
 export default FirebaseService;

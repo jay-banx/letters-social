@@ -4,39 +4,85 @@ import { LoadingIndicator, ErrorIndicator } from "../components";
 
 const withData = (Wrapped) =>
   class extends Component {
-    state = {
+    initialState = {
       data: null,
       loading: true,
-      error: null,
+      error: false,
     };
+
+    state = this.initialState;
 
     onGetData = (data) => {
       this.setState({
         data,
         loading: false,
-        error: null,
+        error: false,
       });
     };
 
-    onError = (error) => {
+    onError = () => {
       this.setState({
         data: null,
         loading: false,
-        error,
+        error: true,
       });
     };
 
-    updateData = () => {
+    onEmpty = () => {
       this.setState({
         data: null,
-        loading: true,
-        error: null,
+        loading: false,
+        error: false,
       });
-      this.props.getData().then(this.onGetData).catch(this.onError);
+    };
+
+    objIsArr = (obj) => {
+      for (let key in obj) {
+        if (obj[key].constructor === Object) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    updateData = () => {
+      this.setState({ ...this.initialState });
+
+      this.props.getData().on(
+        "value",
+        (snapshot) => {
+          const dataObject = snapshot.val();
+
+          if (dataObject) {
+            let data;
+
+            if (this.objIsArr(dataObject)) {
+              data = Object.keys(dataObject).map((key) => ({
+                id: key,
+                ...dataObject[key],
+              }));
+            } else {
+              data = {
+                id: snapshot.key,
+                ...dataObject,
+              };
+            }
+
+            this.onGetData(data);
+          } else {
+            this.onEmpty();
+          }
+        },
+        this.onError
+      );
     };
 
     componentDidMount() {
       this.updateData();
+    }
+
+    componentWillUnmount() {
+      this.props.getData().off();
     }
 
     render() {
