@@ -30,7 +30,7 @@ CommentContainer.propTypes = {};
 CommentContainer.defaultProps = {};
 
 const mapMethodsToProps = (service, props) => ({
-  getData: () => service.getPostComments(props.postId),
+  getData: () => service.getComments(props.postId),
 });
 
 export default compose(

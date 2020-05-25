@@ -11,11 +11,11 @@ const style = {
   },
 };
 
-const CommentHeader = ({ userId, date }) => {
+const CommentHeader = ({ userId, createdAt }) => {
   return (
     <div css={style}>
       <UserInfo userId={userId} />
-      <div>{timeDuration(date)} ago</div>
+      <div>{timeDuration(createdAt)} ago</div>
     </div>
   );
 };

@@ -10,11 +10,11 @@ const style = {
 };
 
 const Post = ({ post }) => {
-  const { id, userId, date, content, location } = post;
+  const { id, userId, createdAt, content, location } = post;
 
   return (
     <div css={style}>
-      <PostHeader userId={userId} date={date} />
+      <PostHeader userId={userId} createdAt={createdAt} />
       <div>{content}</div>
       <div>{location}</div>
       <PostFooter postId={id} />

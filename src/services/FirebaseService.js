@@ -1,6 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
-import "firebase/database";
+import "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -17,32 +17,67 @@ class FirebaseService {
     app.initializeApp(config);
 
     this.auth = app.auth();
-    this.db = app.database();
+    this.db = app.firestore();
   }
 
   // *** Auth API ***
 
-  register = (email, password) =>
+  signUp = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  login = (email, password) =>
+  signIn = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-  logout = () => this.auth.signOut();
+  signOut = () => this.auth.signOut();
 
-  getUser = (userId) => this.db.ref(`users/${userId}`);
+  // *** Firestore API ***
 
-  getAllPosts = () => this.db.ref(`posts`);
+  getUser = (userId) =>
+    this.db.collection("users").doc(userId).get().then(this.mapDoc);
 
-  getPostComments = (postId) => this.db.ref(`comments/${postId}`);
+  getPosts = () => this.db.collection("posts").get().then(this.mapMessages);
 
-  getPostLikes = (postId) => this.db.ref(`likes/${postId}`);
+  getComments = (postId) =>
+    this.db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .get()
+      .then(this.mapMessages);
 
-  createPost = (post) => this.db.ref(`posts`).push(post);
+  getLikes = (postId) =>
+    this.db
+      .collection("posts")
+      .doc(postId)
+      .collection("likes")
+      .get()
+      .then(this.mapSnapshot);
 
-  createComment = (comment) => this.db.ref(`comments`).push(comment);
+  createUser = (userId, user) =>
+    this.db.collection("users").doc(userId).set(user);
 
-  createLike = (like) => this.db.ref(`likes`).push(like);
+  createPost = (post) => this.db.collection("posts").add(post);
+
+  createComment = (comment, postId) =>
+    this.db.collection("posts").doc(postId).collection("comments").add(comment);
+
+  createLike = (like, postId) =>
+    this.db.collection("posts").doc(postId).collection("likes").add(like);
+
+  mapDoc = (doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  });
+
+  mapSnapshot = (snapshot) => snapshot.docs.map(this.mapDoc);
+
+  mapMessage = (message) => ({
+    id: message.id,
+    ...message.data(),
+    createdAt: message.data().createdAt.toDate(),
+  });
+
+  mapMessages = (snapshot) => snapshot.docs.map(this.mapMessage);
 }
 
 export default FirebaseService;

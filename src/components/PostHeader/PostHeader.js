@@ -11,11 +11,11 @@ const style = {
   },
 };
 
-const PostHeader = ({ userId, date }) => {
+const PostHeader = ({ userId, createdAt }) => {
   return (
     <div css={style}>
       <UserInfo userId={userId} />
-      <div>{timeDuration(date)} ago</div>
+      <div>{timeDuration(createdAt)} ago</div>
     </div>
   );
 };

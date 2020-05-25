@@ -7,82 +7,34 @@ const withData = (Wrapped) =>
     initialState = {
       data: null,
       loading: true,
-      error: false,
+      error: null,
     };
 
-    state = this.initialState;
+    state = { ...this.initialState };
 
     onGetData = (data) => {
       this.setState({
         data,
         loading: false,
-        error: false,
+        error: null,
       });
     };
 
-    onError = () => {
+    onError = (error) => {
       this.setState({
         data: null,
         loading: false,
-        error: true,
+        error,
       });
-    };
-
-    onEmpty = () => {
-      this.setState({
-        data: null,
-        loading: false,
-        error: false,
-      });
-    };
-
-    objIsArr = (obj) => {
-      for (let key in obj) {
-        if (obj[key].constructor === Object) {
-          return true;
-        }
-      }
-      return false;
     };
 
     updateData = () => {
       this.setState({ ...this.initialState });
-
-      this.props.getData().on(
-        "value",
-        (snapshot) => {
-          const dataObject = snapshot.val();
-
-          if (dataObject) {
-            let data;
-
-            if (this.objIsArr(dataObject)) {
-              data = Object.keys(dataObject).map((key) => ({
-                id: key,
-                ...dataObject[key],
-              }));
-            } else {
-              data = {
-                id: snapshot.key,
-                ...dataObject,
-              };
-            }
-
-            this.onGetData(data);
-          } else {
-            this.onEmpty();
-          }
-        },
-        this.onError
-      );
+      this.props.getData().then(this.onGetData).catch(this.onError);
     };
 
     componentDidMount() {
       this.updateData();
-    }
-
-    componentWillUnmount() {
-      this.props.getData().off();
     }
 
     render() {

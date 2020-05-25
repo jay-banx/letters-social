@@ -26,7 +26,7 @@ PostContainer.propTypes = {};
 PostContainer.defaultProps = {};
 
 const mapMethodsToProps = (service) => ({
-  getData: service.getAllPosts,
+  getData: service.getPosts,
 });
 
 export default compose(withService(mapMethodsToProps), withData)(PostContainer);

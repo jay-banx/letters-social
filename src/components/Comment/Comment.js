@@ -7,11 +7,11 @@ import { CommentHeader } from "../../components";
 const style = {};
 
 const Comment = ({ comment }) => {
-  const { userId, date, content } = comment;
+  const { userId, createdAt, content } = comment;
 
   return (
     <div css={style}>
-      <CommentHeader userId={userId} date={date} />
+      <CommentHeader userId={userId} createdAt={createdAt} />
       <div>{content}</div>
     </div>
   );
