@@ -18,7 +18,6 @@ const CreatePost = ({ onCreatePost, createPost }) => {
     createPost({
       userId: 0, // Fix it
       content: text,
-      location: null,
     }).then(onCreatePost); // Add catch
     setText("");
   };
@@ -33,7 +32,6 @@ const CreatePost = ({ onCreatePost, createPost }) => {
           onChange={(event) => setText(event.target.value)}
         />
         <button type="submit">Post</button>
-        <a href="/#">Add location</a>
       </form>
     </div>
   );
