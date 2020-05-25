@@ -6,22 +6,22 @@ import { withService } from "../../hocs";
 
 const style = {};
 
-const LogoutButton = ({ logout }) => {
+const SignOutButton = ({ signOut }) => {
   return (
     <div css={style}>
-      <button type="button" onClick={logout}>
-        Logout
+      <button type="button" onClick={signOut}>
+        SignOut
       </button>
     </div>
   );
 };
 
-LogoutButton.propTypes = {};
+SignOutButton.propTypes = {};
 
-LogoutButton.defaultProps = {};
+SignOutButton.defaultProps = {};
 
 const mapMethodsToProps = (service) => ({
-  logout: service.logout,
+  signOut: service.signOut,
 });
 
-export default withService(mapMethodsToProps)(LogoutButton);
+export default withService(mapMethodsToProps)(SignOutButton);

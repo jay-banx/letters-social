@@ -1,7 +1,7 @@
 /* PLOP_INJECT_IMPORT */
-import LogoutButton from './LogoutButton';
-import AuthForm from './AuthForm';
-import RegisterForm from './RegisterForm';
+import SignOutButton from "./SignOutButton";
+import AuthForm from "./AuthForm";
+import SignUpForm from "./SignUpForm";
 import CommentHeader from "./CommentHeader";
 import UserInfo from "./UserInfo";
 import CommentContainer from "./CommentContainer";
@@ -11,7 +11,7 @@ import Comment from "./Comment";
 import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
 import Profile from "./Profile";
-import LoginForm from "./LoginForm";
+import SignInForm from "./SignInForm";
 import AdList from "./AdList";
 import PostContainer from "./PostContainer";
 import LoadingIndicator from "./LoadingIndicator";
@@ -25,9 +25,9 @@ import Welcome from "./Welcome";
 
 export {
   /* PLOP_INJECT_EXPORT */
-	LogoutButton,
-	AuthForm,
-	RegisterForm,
+  SignOutButton,
+  AuthForm,
+  SignUpForm,
   CommentHeader,
   UserInfo,
   CommentContainer,
@@ -37,7 +37,7 @@ export {
   PostFooter,
   PostHeader,
   Profile,
-  LoginForm,
+  SignInForm,
   AdList,
   PostContainer,
   LoadingIndicator,

@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 
 import { Link } from "react-router-dom";
 
-import { LogoutButton } from "../../components";
+import { SignOutButton } from "../../components";
 
 import { HOME, FEED, AUTH, PROFILE } from "../../constants/routes";
 import { AuthUserConsumer } from "../../contexts";
@@ -38,7 +38,7 @@ const HeaderAuth = () => (
         <Link to={PROFILE}>Profile</Link>
       </li>
       <li>
-        <LogoutButton />
+        <SignOutButton />
       </li>
     </ul>
   </div>

@@ -15,7 +15,7 @@ const style = {
   },
 };
 
-class RegisterForm extends Component {
+class SignUpForm extends Component {
   initialState = {
     firstName: "",
     lastName: "",
@@ -33,10 +33,10 @@ class RegisterForm extends Component {
   onChange = (event) =>
     this.setState({ [event.target.name]: event.target.value });
 
-  onRegister = (event) => {
+  onSignUp = (event) => {
     event.preventDefault();
 
-    const { register, getUser, history } = this.props;
+    const { signUp, createUser, history } = this.props;
     const {
       firstName,
       lastName,
@@ -47,16 +47,15 @@ class RegisterForm extends Component {
       passwordOne,
     } = this.state;
 
-    register(email, passwordOne)
+    signUp(email, passwordOne)
       .then((authUser) => {
-        // Create a user in your Firebase realtime database
-        return getUser(authUser.user.uid).set({
+        // Create a user in your Firestore
+        return createUser(authUser.user.uid, {
           firstName,
           lastName,
           age,
           username,
           avatar,
-          email,
         });
       })
       .then(() => {
@@ -93,7 +92,7 @@ class RegisterForm extends Component {
 
     return (
       <div css={style}>
-        <form action="" onSubmit={this.onRegister}>
+        <form action="" onSubmit={this.onSignUp}>
           <label>
             First name
             <input
@@ -183,7 +182,7 @@ class RegisterForm extends Component {
             />
           </label>
           <button disabled={isInvalid} type="submit">
-            Register
+            SignUp
           </button>
         </form>
       </div>
@@ -191,16 +190,13 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {};
+SignUpForm.propTypes = {};
 
-RegisterForm.defaultProps = {};
+SignUpForm.defaultProps = {};
 
 const mapMethodsToProps = (service) => ({
-  register: service.register,
-  getUser: service.getUser,
+  signUp: service.signUp,
+  createUser: service.createUser,
 });
 
-export default compose(
-  withRouter,
-  withService(mapMethodsToProps)
-)(RegisterForm);
+export default compose(withRouter, withService(mapMethodsToProps))(SignUpForm);

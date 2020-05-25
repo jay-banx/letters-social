@@ -15,7 +15,7 @@ const style = {
   },
 };
 
-class LoginForm extends Component {
+class SignInForm extends Component {
   initialState = {
     email: "",
     password: "",
@@ -27,13 +27,13 @@ class LoginForm extends Component {
   onChange = (event) =>
     this.setState({ [event.target.name]: event.target.value });
 
-  onLogin = (event) => {
+  onSignIn = (event) => {
     event.preventDefault();
 
     const { email, password } = this.state;
-    const { login, history } = this.props;
+    const { signIn, history } = this.props;
 
-    login(email, password)
+    signIn(email, password)
       .then(() => {
         this.setState({ ...this.initialState });
         history.push(HOME);
@@ -50,7 +50,7 @@ class LoginForm extends Component {
 
     return (
       <div css={style}>
-        <form action="" onSubmit={this.onLogin}>
+        <form action="" onSubmit={this.onSignIn}>
           <label>
             Email
             <input
@@ -74,7 +74,7 @@ class LoginForm extends Component {
             />
           </label>
           <button disabled={isInvalid} type="submit">
-            Login
+            SignIn
           </button>
         </form>
       </div>
@@ -82,12 +82,12 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {};
+SignInForm.propTypes = {};
 
-LoginForm.defaultProps = {};
+SignInForm.defaultProps = {};
 
 const mapMethodsToProps = (service) => ({
-  login: service.login,
+  signIn: service.signIn,
 });
 
-export default compose(withRouter, withService(mapMethodsToProps))(LoginForm);
+export default compose(withRouter, withService(mapMethodsToProps))(SignInForm);

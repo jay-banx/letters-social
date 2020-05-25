@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-import { LoginForm, RegisterForm } from "../../components";
+import { SignInForm, SignUpForm } from "../../components";
 
 const style = {
   backgroundColor: "white",
@@ -21,10 +21,10 @@ const AuthForm = (props) => {
   return (
     <div css={style}>
       <div>
-        <span onClick={() => setVisible(true)}>Login</span>
-        <span onClick={() => setVisible(false)}>Register</span>
+        <span onClick={() => setVisible(true)}>SignIn</span>
+        <span onClick={() => setVisible(false)}>SignUp</span>
       </div>
-      {visible ? <LoginForm /> : <RegisterForm />}
+      {visible ? <SignInForm /> : <SignUpForm />}
     </div>
   );
 };
