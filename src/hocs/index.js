@@ -1,4 +1,5 @@
+import withAuthUser from "./withAuthUser";
 import withService from "./withService";
 import withData from "./withData";
 
-export { withService, withData };
+export { withAuthUser, withService, withData };

@@ -2,25 +2,33 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { compose } from "../../utils";
 
-import { withService } from "../../hocs";
+import { withService, withAuthUser } from "../../hocs";
 
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
 };
 
-const CreateComment = ({ onCreateComment, createComment, postId }) => {
-  const [text, setText] = useState("");
+const CreateComment = ({
+  onCreateComment,
+  createComment,
+  postId,
+  authUser,
+}) => {
+  const [content, setContent] = useState("");
 
   const onComment = (event) => {
     event.preventDefault();
-    createComment({
-      userId: 0, // Fix it
-      content: text,
-      postId,
-    }).then(onCreateComment); // Add catch
-    setText("");
+    createComment(
+      {
+        userId: authUser.uid,
+        content,
+      },
+      postId
+    ).then(onCreateComment); // Add catch
+    setContent("");
   };
 
   return (
@@ -29,8 +37,8 @@ const CreateComment = ({ onCreateComment, createComment, postId }) => {
         <input
           type="text"
           placeholder="Your comment..."
-          value={text}
-          onChange={(event) => setText(event.target.value)}
+          value={content}
+          onChange={(event) => setContent(event.target.value)}
         />
         <button type="submit">Comment</button>
       </form>
@@ -46,4 +54,7 @@ const mapMethodsToProps = (service) => ({
   createComment: service.createComment,
 });
 
-export default withService(mapMethodsToProps)(CreateComment);
+export default compose(
+  withService(mapMethodsToProps),
+  withAuthUser
+)(CreateComment);

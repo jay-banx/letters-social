@@ -2,24 +2,25 @@
 import { jsx } from "@emotion/core";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { compose } from "../../utils";
 
-import { withService } from "../../hocs";
+import { withService, withAuthUser } from "../../hocs";
 
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
 };
 
-const CreatePost = ({ onCreatePost, createPost }) => {
-  const [text, setText] = useState("");
+const CreatePost = ({ onCreatePost, createPost, authUser }) => {
+  const [content, setContent] = useState("");
 
   const onPost = (event) => {
     event.preventDefault();
     createPost({
-      userId: 0, // Fix it
-      content: text,
+      userId: authUser.uid,
+      content,
     }).then(onCreatePost); // Add catch
-    setText("");
+    setContent("");
   };
 
   return (
@@ -28,8 +29,8 @@ const CreatePost = ({ onCreatePost, createPost }) => {
         <input
           type="text"
           placeholder="What's on your mind?"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
+          value={content}
+          onChange={(event) => setContent(event.target.value)}
         />
         <button type="submit">Post</button>
       </form>
@@ -45,4 +46,7 @@ const mapMethodsToProps = (service) => ({
   createPost: service.createPost,
 });
 
-export default withService(mapMethodsToProps)(CreatePost);
+export default compose(
+  withService(mapMethodsToProps),
+  withAuthUser
+)(CreatePost);

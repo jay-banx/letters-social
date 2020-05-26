@@ -20,6 +20,10 @@ class FirebaseService {
     this.db = app.firestore();
   }
 
+  // *** Helpers ***
+
+  fieldValue = app.firestore.FieldValue;
+
   // *** Auth API ***
 
   signUp = (email, password) =>
@@ -32,18 +36,38 @@ class FirebaseService {
 
   // *** Firestore API ***
 
+  // Get data
+
   getUser = (userId) =>
     this.db.collection("users").doc(userId).get().then(this.mapDoc);
 
-  getPosts = () => this.db.collection("posts").get().then(this.mapMessages);
+  getPosts = () =>
+    this.db
+      .collection("posts")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then(this.mapMessages);
+
+  getPost = (postId) =>
+    this.db.collection("posts").doc(postId).get().then(this.mapMessage);
 
   getComments = (postId) =>
     this.db
       .collection("posts")
       .doc(postId)
       .collection("comments")
+      .orderBy("createdAt", "desc")
       .get()
       .then(this.mapMessages);
+
+  getComment = (postId, commentId) =>
+    this.db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .doc(commentId)
+      .get()
+      .then(this.mapMessage);
 
   getLikes = (postId) =>
     this.db
@@ -53,16 +77,35 @@ class FirebaseService {
       .get()
       .then(this.mapSnapshot);
 
+  // Create data
+
   createUser = (userId, user) =>
     this.db.collection("users").doc(userId).set(user);
 
-  createPost = (post) => this.db.collection("posts").add(post);
+  createPost = (post) =>
+    this.db
+      .collection("posts")
+      .add({
+        ...post,
+        createdAt: this.fieldValue.serverTimestamp(),
+      })
+      .then((doc) => this.getPost(doc.id));
 
   createComment = (comment, postId) =>
-    this.db.collection("posts").doc(postId).collection("comments").add(comment);
+    this.db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .add({
+        ...comment,
+        createdAt: this.fieldValue.serverTimestamp(),
+      })
+      .then((doc) => this.getComment(postId, doc.id));
 
   createLike = (like, postId) =>
     this.db.collection("posts").doc(postId).collection("likes").add(like);
+
+  // Mapping data
 
   mapDoc = (doc) => ({
     id: doc.id,
