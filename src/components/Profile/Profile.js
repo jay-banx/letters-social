@@ -1,25 +1,46 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
-import PropTypes from "prop-types"
+import { jsx } from "@emotion/core";
+import PropTypes from "prop-types";
 
-const style = {
+import { compose } from "../../utils";
+import { withService, withData, withAuthUser } from "../../hocs";
 
-}
+const style = {};
 
-const Profile = (props) => {
+const Profile = ({ authUser }) =>
+  authUser ? <ProfileAuth authUser={authUser} /> : <ProfileNonAuth />;
+
+const ProfileAuthBase = ({ data: user }) => {
+  const { firstName, lastName, username, age, avatar } = user;
+
   return (
     <div css={style}>
-      Profile
+      <img src={avatar} alt="" />
+      <ul>
+        <li>First Name: {firstName}</li>
+        <li>Last Name: {lastName}</li>
+        <li>Username: {username}</li>
+        <li>Age: {age}</li>
+      </ul>
     </div>
   );
 };
 
-Profile.propTypes = {
+const mapMethodsToProps = (service, props) => ({
+  getData: () => service.getUser(props.authUser.uid),
+});
 
+const ProfileAuth = compose(
+  withService(mapMethodsToProps),
+  withData
+)(ProfileAuthBase);
+
+const ProfileNonAuth = () => {
+  return <div css={style}>ProfileNonAuth</div>;
 };
 
-Profile.defaultProps = {
-  
-};
+Profile.propTypes = {};
 
-export default Profile;
+Profile.defaultProps = {};
+
+export default withAuthUser(Profile);

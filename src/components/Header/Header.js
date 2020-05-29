@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { SignOutButton } from "../../components";
 
 import { HOME, FEED, AUTH, PROFILE } from "../../constants/routes";
-import { AuthUserConsumer } from "../../contexts";
+import { withAuthUser } from "../../hocs";
 
 const style = {
   backgroundColor: "blue",
@@ -19,11 +19,8 @@ const style = {
   },
 };
 
-const Header = () => (
-  <AuthUserConsumer>
-    {(authUser) => (authUser ? <HeaderAuth /> : <HeaderNonAuth />)}
-  </AuthUserConsumer>
-);
+const Header = ({ authUser }) =>
+  authUser ? <HeaderAuth /> : <HeaderNonAuth />;
 
 const HeaderAuth = () => (
   <div css={style}>
@@ -57,4 +54,4 @@ const HeaderNonAuth = () => (
   </div>
 );
 
-export default Header;
+export default withAuthUser(Header);
