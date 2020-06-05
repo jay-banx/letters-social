@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import SignInButton from './SignInButton';
 import SignOutButton from "./SignOutButton";
 import AuthForm from "./AuthForm";
 import SignUpForm from "./SignUpForm";
@@ -25,6 +26,7 @@ import Welcome from "./Welcome";
 
 export {
   /* PLOP_INJECT_EXPORT */
+	SignInButton,
   SignOutButton,
   AuthForm,
   SignUpForm,

@@ -2,11 +2,11 @@
 import { jsx, Global } from "@emotion/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Component } from "react";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 
 import { JSONService, FirebaseService } from "../services";
 import { ServiceProvider, AuthUserProvider } from "../contexts";
-import { store } from "../redux/store";
+// import { store } from "../redux/store";
 
 import { HOME, FEED, AUTH, PROFILE } from "../constants/routes";
 
@@ -24,6 +24,7 @@ const globalStyles = {
     margin: 0,
     padding: 0,
     backgroundColor: "lightgrey",
+    fontFamily: "Arial, Helvetica, sans-serif",
   },
 };
 
@@ -54,25 +55,25 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <ServiceProvider value={service}>
-          <AuthUserProvider value={this.state.authUser}>
-            <Router>
-              <Global styles={globalStyles} />
-              <div css={style}>
-                <Header />
-                <Switch>
-                  <Route path={HOME} exact component={HomePage} />
-                  <Route path={FEED} exact component={FeedPage} />
-                  <Route path={AUTH} exact component={AuthPage} />
-                  <Route path={PROFILE} exact component={ProfilePage} />
-                  <Route component={NotFoundPage} />
-                </Switch>
-              </div>
-            </Router>
-          </AuthUserProvider>
-        </ServiceProvider>
-      </Provider>
+      // <Provider store={store}>
+      <ServiceProvider value={service}>
+        <AuthUserProvider value={this.state.authUser}>
+          <Router>
+            <Global styles={globalStyles} />
+            <div css={style}>
+              <Header />
+              <Switch>
+                <Route path={HOME} exact component={HomePage} />
+                <Route path={FEED} exact component={FeedPage} />
+                <Route path={AUTH} exact component={AuthPage} />
+                <Route path={PROFILE} exact component={ProfilePage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </div>
+          </Router>
+        </AuthUserProvider>
+      </ServiceProvider>
+      // </Provider>
     );
   }
 }

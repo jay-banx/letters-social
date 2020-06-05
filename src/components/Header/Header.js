@@ -3,9 +3,9 @@ import { jsx } from "@emotion/core";
 
 import { Link } from "react-router-dom";
 
-import { SignOutButton } from "../../components";
+import { SignOutButton, SignInButton } from "../../components";
 
-import { HOME, FEED, AUTH, PROFILE } from "../../constants/routes";
+import { HOME, FEED, PROFILE } from "../../constants/routes";
 import { withAuthUser } from "../../hocs";
 
 const style = {
@@ -13,9 +13,17 @@ const style = {
   "& > ul": {
     display: "flex",
     alignItems: "center",
+    listStyle: "none",
+  },
+  "& > ul > li": {
+    marginRight: "2vw",
   },
   "& > ul > li:last-child": {
     marginLeft: "auto",
+  },
+  "& a": {
+    textDecoration: "none",
+    color: "white",
   },
 };
 
@@ -48,7 +56,7 @@ const HeaderNonAuth = () => (
         <Link to={HOME}>Home</Link>
       </li>
       <li>
-        <Link to={AUTH}>Auth</Link>
+        <SignInButton />
       </li>
     </ul>
   </div>
