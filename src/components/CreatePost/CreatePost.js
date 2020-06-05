@@ -9,6 +9,18 @@ import { withService, withAuthUser } from "../../hocs";
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
+  "& > form": {
+    display: "flex",
+  },
+  "& > form > input": {
+    width: "100%",
+    padding: 10,
+    border: "none",
+  },
+  "& > form > button": {
+    border: "none",
+    cursor: "pointer",
+  },
 };
 
 const CreatePost = ({ onCreatePost, createPost, authUser }) => {

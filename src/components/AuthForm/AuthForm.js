@@ -9,6 +9,10 @@ const style = {
   backgroundColor: "white",
   "& > div": {
     display: "flex",
+    padding: 10,
+  },
+  "& > div > span": {
+    cursor: "pointer",
   },
   "& > div > span:last-child": {
     marginLeft: "auto",
@@ -21,8 +25,8 @@ const AuthForm = (props) => {
   return (
     <div css={style}>
       <div>
-        <span onClick={() => setVisible(true)}>SignIn</span>
-        <span onClick={() => setVisible(false)}>SignUp</span>
+        <span onClick={() => setVisible(true)}>Sign In</span>
+        <span onClick={() => setVisible(false)}>Sign Up</span>
       </div>
       {visible ? <SignInForm /> : <SignUpForm />}
     </div>

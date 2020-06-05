@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 
 import { CommentHeader } from "../../components";
 
-const style = {};
+const style = {
+  marginBottom: 10,
+};
 
 const Comment = ({ comment }) => {
   const { userId, createdAt, content } = comment;

@@ -8,6 +8,7 @@ import { CommentContainer } from "../../components";
 const style = {
   display: "flex",
   flexWrap: "wrap",
+  marginTop: 10,
 };
 
 const PostFooter = ({ postId }) => {

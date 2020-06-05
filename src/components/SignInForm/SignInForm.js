@@ -12,6 +12,15 @@ import { HOME } from "../../constants/routes";
 const style = {
   "& > form > label": {
     display: "flex",
+    marginBottom: 5,
+  },
+  "& > form > input": {
+    display: "flex",
+    padding: 5,
+    marginBottom: 10,
+  },
+  "& > form > button": {
+    display: "flex",
   },
 };
 
@@ -51,30 +60,27 @@ class SignInForm extends Component {
     return (
       <div css={style}>
         <form action="" onSubmit={this.onSignIn}>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={this.onChange}
-              placeholder="Type e-mail address..."
-            />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={password}
-              onChange={this.onChange}
-              placeholder="Type password..."
-            />
-          </label>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={this.onChange}
+            placeholder="Type e-mail address..."
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={this.onChange}
+            placeholder="Type password..."
+          />
+
           <button disabled={isInvalid} type="submit">
-            SignIn
+            Sign In
           </button>
         </form>
       </div>

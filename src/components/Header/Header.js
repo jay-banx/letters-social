@@ -14,6 +14,7 @@ const style = {
     display: "flex",
     alignItems: "center",
     listStyle: "none",
+    margin: "10px 0",
   },
   "& > ul > li": {
     marginRight: "2vw",

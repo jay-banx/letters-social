@@ -6,6 +6,10 @@ import { withData, withService } from "../../hocs";
 
 const style = {
   display: "flex",
+  alignItems: "center",
+  "& > img": {
+    marginRight: 5,
+  },
 };
 
 const UserInfo = ({ data: user }) => {

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 const style = {
   backgroundColor: "white",
+  padding: 10,
 };
 
 const Ad = (props) => {

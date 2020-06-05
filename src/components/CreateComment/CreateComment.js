@@ -9,6 +9,19 @@ import { withService, withAuthUser } from "../../hocs";
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
+  "& > form": {
+    display: "flex",
+  },
+  "& > form > input": {
+    width: "100%",
+    padding: 5,
+    border: "1px solid black",
+    borderRight: "none",
+  },
+  "& > form > button": {
+    border: "1px solid black",
+    cursor: "pointer",
+  },
 };
 
 const CreateComment = ({

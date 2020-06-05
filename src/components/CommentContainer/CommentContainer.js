@@ -10,6 +10,8 @@ import { CommentList, CreateComment } from "../../components";
 
 const style = {
   width: "100%",
+  marginLeft: 20,
+  marginTop: 10,
 };
 
 const CommentContainer = ({ data, postId }) => {

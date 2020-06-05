@@ -7,6 +7,7 @@ import { PostHeader, PostFooter } from "../../components";
 const style = {
   backgroundColor: "white",
   marginBottom: 10,
+  padding: 10,
 };
 
 const Post = ({ post }) => {

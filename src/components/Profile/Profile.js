@@ -5,7 +5,14 @@ import PropTypes from "prop-types";
 import { compose } from "../../utils";
 import { withService, withData, withAuthUser } from "../../hocs";
 
-const style = {};
+const style = {
+  backgroundColor: "white",
+  padding: 10,
+  display: "flex",
+  "& > ul": {
+    listStyle: "none",
+  },
+};
 
 const Profile = ({ authUser }) =>
   authUser ? <ProfileAuth authUser={authUser} /> : <ProfileNonAuth />;

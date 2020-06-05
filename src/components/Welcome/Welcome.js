@@ -3,9 +3,11 @@ import { jsx } from "@emotion/core";
 
 const style = {
   backgroundColor: "white",
+  padding: 10,
+  height: "max-content",
 };
 
-const Welcome = (props) => {
+const Welcome = () => {
   return (
     <div css={style}>
       <h1>Welcome!</h1>

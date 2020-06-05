@@ -6,6 +6,7 @@ import { UserInfo } from "../../components";
 
 const style = {
   display: "flex",
+  marginBottom: 10,
   "& > div:last-child": {
     marginLeft: "auto",
   },
